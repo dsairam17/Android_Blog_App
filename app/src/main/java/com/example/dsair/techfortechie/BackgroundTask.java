@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -73,9 +74,13 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             }
             catch(MalformedURLException e){
                 e.printStackTrace();
+                Log.i("BackgroundTask.java", "MalformedURLException");
+                return "Unable to contact server. Make sure you have an ACTIVE INTERNET CONNECTION";
             }
             catch(IOException e){
                 e.printStackTrace();
+                Log.i("BackgroundTask.java", "IOException");
+                return "Unable to contact server. Make sure you have an ACTIVE INTERNET CONNECTION";
             }
 
         }
@@ -95,8 +100,11 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             context.startActivity(intent);
             Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show();
         }
-        else{
+        else if(s.equals("false")){
             Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
         }
 
 
