@@ -1,6 +1,8 @@
 package com.example.dsair.techfortechie;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -21,50 +23,70 @@ public class LoginActivity extends AppCompatActivity{
     FloatingActionButton mRegister;
     TextInputLayout mInputLayoutEmail, mInputLayoutPassword;
     Button mLogin;
+
+    String mEmailStored = "";
+    String mPasswordStored = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        mEmailEt = (EditText) findViewById(R.id.email);
-        mPasswordEt = (EditText) findViewById(R.id.password);
-        mLogin = (Button) findViewById(R.id.login_btn);
-        mRegister = (FloatingActionButton) findViewById(R.id.fab);
-        mInputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
-        mInputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_password);
-        mLogin.setOnClickListener(new View.OnClickListener() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
-                userLogin();
-            }
-        });
-        mRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this ,RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mEmailEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(!Validation.isValidEmail(s)){
-                    mInputLayoutEmail.setError("Enter a valid Email Address");
+            public void run() {
+                SharedPreferences preferences = getSharedPreferences("loginData", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                mEmailStored = preferences.getString("email", null);
+                mPasswordStored = preferences.getString("password", null);
+                if(mEmailStored != null){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    LoginActivity.this.finish();
                 }
-                else
-                    mInputLayoutEmail.setErrorEnabled(false);
+                else{
+                    setContentView(R.layout.activity_login);
+                    mEmailEt = (EditText) findViewById(R.id.email);
+                    mPasswordEt = (EditText) findViewById(R.id.password);
+                    mLogin = (Button) findViewById(R.id.login_btn);
+                    mRegister = (FloatingActionButton) findViewById(R.id.fab);
+                    mInputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
+                    mInputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_password);
+                    mLogin.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            userLogin();
+                        }
+                    });
+                    mRegister.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(LoginActivity.this ,RegisterActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+
+                    mEmailEt.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            if(!Validation.isValidEmail(s)){
+                                mInputLayoutEmail.setError("Enter a valid Email Address");
+                            }
+                            else
+                                mInputLayoutEmail.setErrorEnabled(false);
+                        }
+                    });
+                }
             }
-        });
+        }, 0);
+
     }
 
 
@@ -81,7 +103,6 @@ public class LoginActivity extends AppCompatActivity{
             String action = "login";
             BackgroundTask backgroundTask = new BackgroundTask(this);
             backgroundTask.execute(action, mLoginEmail, mLoginPass);
-//            finish(); Change it
         }
     }
 }

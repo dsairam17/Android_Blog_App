@@ -3,6 +3,7 @@ package com.example.dsair.techfortechie;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -19,9 +20,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class BackgroundTask extends AsyncTask<String, Void, String> {
     Context context;
     ProgressDialog progressDialog;
+    String mEmail="";
+    String mPassword="";
 
     public BackgroundTask(Context context){
         this.context = context;
@@ -44,8 +49,11 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
         String register_url = "http://www.techfortechie.com/api/signup_api.php";
         String action = params[0];
         if(action.equals("login")){
+            mEmail = params[1];
+            mPassword = params[2];
             String email = params[1];
             String password = params[2];
+
             try{
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -140,8 +148,14 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         progressDialog.dismiss();
         if(s.equals("true")){
+            SharedPreferences preferences = context.getSharedPreferences("loginData", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("email", mEmail);
+            editor.putString("password", mPassword);
+            editor.commit();
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
+
             Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show();
         }
         else if(s.equals("false")){

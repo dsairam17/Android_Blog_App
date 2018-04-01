@@ -61,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!Validation.isValidEmail(s)){
+
                     mInputLayoutEmail.setError("Enter a valid Email Address");
                 }
                 else
