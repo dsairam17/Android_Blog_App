@@ -82,7 +82,6 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 Log.i("BackgroundTask.java", "IOException");
                 return "Unable to contact server. Make sure you have an ACTIVE INTERNET CONNECTION";
             }
-
         }
         return null;
     }
