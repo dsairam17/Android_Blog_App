@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity{
                     mInputLayoutEmail.setErrorEnabled(false);
             }
         });
-
     }
 
 
@@ -76,13 +75,13 @@ public class LoginActivity extends AppCompatActivity{
             mInputLayoutEmail.setError("Enter a valid Email Address");
         }
         else if(mLoginPass.isEmpty()){
-
             mInputLayoutPassword.setError("Enter password");
         }
         else {
             String action = "login";
             BackgroundTask backgroundTask = new BackgroundTask(this);
             backgroundTask.execute(action, mLoginEmail, mLoginPass);
+//            finish(); Change it
         }
     }
 }
