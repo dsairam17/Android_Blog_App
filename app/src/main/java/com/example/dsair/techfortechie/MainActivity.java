@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -117,7 +118,12 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             json_data = result;
 //            Log.e("MainActivity", json_data+"Hello");
-            parseJson();
+            if(result == null){
+                Toast toast = Toast.makeText(MainActivity.this, "No Internet connection", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+            else
+                parseJson();
         }
 
         @Override

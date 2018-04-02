@@ -1,6 +1,7 @@
 package com.example.dsair.techfortechie;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -82,6 +83,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             Post post = mPostList.get(position);
             Toast toast = Toast.makeText(mContext, post.getPermalink(), Toast.LENGTH_SHORT);
             toast.show();
+            Intent intent = new Intent(mContext, WebPostActivity.class);
+            intent.putExtra("permalink", post.getPermalink());
+            mContext.startActivity(intent);
         }
 
     }
