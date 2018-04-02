@@ -155,14 +155,13 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             editor.commit();
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
-
             Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show();
         }
         else if(s.equals("false")){
             Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
         }
         else if(s.equals("registration_true")){
-            Intent intent = new Intent(context, MainActivity.class);
+            Intent intent = new Intent(context, LoginActivity.class);
             context.startActivity(intent);
             Toast.makeText(context, "Account Created Successfully", Toast.LENGTH_SHORT).show();
         }

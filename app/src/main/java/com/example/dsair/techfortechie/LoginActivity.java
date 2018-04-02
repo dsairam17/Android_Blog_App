@@ -103,6 +103,7 @@ public class LoginActivity extends AppCompatActivity{
             String action = "login";
             BackgroundTask backgroundTask = new BackgroundTask(this);
             backgroundTask.execute(action, mLoginEmail, mLoginPass);
+//            finish();
         }
     }
 }
