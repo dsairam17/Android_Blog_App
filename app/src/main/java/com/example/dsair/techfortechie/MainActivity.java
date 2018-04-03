@@ -1,7 +1,10 @@
 package com.example.dsair.techfortechie;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     String json_data="";
     JSONObject jsonObject;
     JSONArray jsonArray;
+    boolean doubleBackPressedOnce=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,12 +80,19 @@ public class MainActivity extends AppCompatActivity {
 
     class JsonTask extends AsyncTask<Void, Void, String>
     {
+        ProgressDialog progressDialog;
         String mJsonUrl;
         String mJsonData;
 
         @Override
         protected void onPreExecute() {
             mJsonUrl = "http://techfortechie.com/api/posts_api.php";
+            progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Loading...");
+            progressDialog.setIndeterminate(false);
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setCancelable(true);
+            progressDialog.show();
         }
 
         @Override
@@ -116,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            progressDialog.dismiss();
             json_data = result;
 //            Log.e("MainActivity", json_data+"Hello");
             if(result == null){
@@ -134,5 +146,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if(doubleBackPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+        this.doubleBackPressedOnce = true;
+        Snackbar snackbar = Snackbar.make(findViewById(R.id.main_activity_layout), R.string.double_press_exit, Snackbar.LENGTH_SHORT);
+        snackbar.show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackPressedOnce = false;
+            }
+        }, 2000);
+    }
 
 }
