@@ -75,7 +75,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         public void setData(Post post, int position) {
             mTitleTextView.setText(post.getTitle());
-            mPostImageView.setImageDrawable(mContext.getResources().getDrawable(post.getImageLoc()));
+//            mPostImageView.setImageDrawable(mContext.getResources().getDrawable(post.getImageLoc()));
+            new ImageLoadTask(post.getImageLoc(), mPostImageView).execute();
             this.mPosition = position;
         }
 

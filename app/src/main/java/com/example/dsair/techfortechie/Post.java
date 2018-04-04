@@ -5,10 +5,10 @@ public class Post {
     private String title;
     private String content;
     private String permalink;
-    private int imageLoc;
+    private String imageLoc;
     private String author;
 
-    public Post(int id, String title, String content, String permalink, int imageLoc, String author){
+    public Post(int id, String title, String content, String permalink, String imageLoc, String author){
         this.id = id;
         this.title = title;
         this.content = content;
@@ -32,7 +32,7 @@ public class Post {
         return permalink;
     }
 
-    public int getImageLoc() {
+    public String getImageLoc() {
         return imageLoc;
     }
 

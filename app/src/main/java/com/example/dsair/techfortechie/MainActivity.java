@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 author = JO.getString("author");
                 image = JO.getString("image");
                 permalink = JO.getString("permalink");
-                mPostList.add(new Post(count, title, content, permalink, R.drawable.placeholder_600x400, author));
+                mPostList.add(new Post(count, title, content, permalink, image, author));
                 count++;
             }
-            mPostList.add(new Post(1, "AMD Threadripper vs Intel Core-i9", "Temp Content", "amd-threadripper", R.drawable.placeholder_600x400, "sairam"));
-            mPostList.add(new Post(2, "Second Post", "Temp", "second-post", R.drawable.placeholder_600x400, "sairam"));
+//            mPostList.add(new Post(1, "AMD Threadripper vs Intel Core-i9", "Temp Content", "amd-threadripper", R.drawable.placeholder_600x400, "sairam"));
+//            mPostList.add(new Post(2, "Second Post", "Temp", "second-post", R.drawable.placeholder_600x400, "sairam"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
