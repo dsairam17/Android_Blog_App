@@ -41,7 +41,13 @@ public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        super.onPostExecute(bitmap);
-        imageView.setImageBitmap(bitmap);
+        if(bitmap != null){
+            super.onPostExecute(bitmap);
+            imageView.setImageBitmap(bitmap);
+        }
+        else{
+            imageView.setImageResource(R.drawable.placeholder_600x400);
+        }
+
     }
 }
