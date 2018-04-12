@@ -1,5 +1,6 @@
 package com.example.dsair.techfortechie;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -148,14 +149,15 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         progressDialog.dismiss();
         if(s.equals("true")){
-            SharedPreferences preferences = context.getSharedPreferences("loginData", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
+            SharedPreferences sharedPreferences = context.getSharedPreferences("loginData", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("email", mEmail);
             editor.putString("password", mPassword);
             editor.commit();
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
             Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show();
+            ((Activity)context).finish();
         }
         else if(s.equals("false")){
             Toast.makeText(context, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
@@ -164,6 +166,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             Intent intent = new Intent(context, LoginActivity.class);
             context.startActivity(intent);
             Toast.makeText(context, "Account Created Successfully", Toast.LENGTH_SHORT).show();
+            ((Activity)context).finish();
         }
         else if(s.equals("registration_false")){
             Toast.makeText(context, "Email or Username already exists", Toast.LENGTH_SHORT).show();

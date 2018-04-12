@@ -32,10 +32,10 @@ public class LoginActivity extends AppCompatActivity{
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences preferences = getSharedPreferences("loginData", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                mEmailStored = preferences.getString("email", null);
-                mPasswordStored = preferences.getString("password", null);
+                SharedPreferences sharedPreferences = getSharedPreferences("loginData", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                mEmailStored = sharedPreferences.getString("email", null);
+                mPasswordStored = sharedPreferences.getString("password", null);
                 if(mEmailStored != null){
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);

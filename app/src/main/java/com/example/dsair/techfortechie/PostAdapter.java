@@ -3,6 +3,8 @@ package com.example.dsair.techfortechie;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Random;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
@@ -65,12 +68,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.post_image:
+                    createNotif();
                     openPost(mPosition);
                     break;
                 case R.id.title_textview:
                     openPost(mPosition);
                     break;
             }
+        }
+
+        private void createNotif() {
+            NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(mContext, "default")
+                    .setSmallIcon(R.drawable.profile_icon)
+                    .setContentTitle("New Post")
+                    .setContentText("Amd Threadripper vs Intel core i9")
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(mContext);
+            notificationManager.notify(new Random().nextInt(20), builder.build());
         }
 
         public void setData(Post post, int position) {
