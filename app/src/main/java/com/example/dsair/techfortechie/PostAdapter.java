@@ -29,7 +29,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     @Override
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.post_item, null);
+        View view = inflater.inflate(R.layout.post_item, parent, false);
         return new PostViewHolder(view);
     }
 

@@ -24,9 +24,9 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default")
                 .setAutoCancel(true)
-                .setContentTitle("TechForTechie")
+                .setContentTitle("TechForTechie[New Post]")
                 .setContentText(message)
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
+                .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent);
 
