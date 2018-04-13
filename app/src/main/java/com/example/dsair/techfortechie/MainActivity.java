@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void parseJson(){
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         mPostList = new ArrayList<Post>();
