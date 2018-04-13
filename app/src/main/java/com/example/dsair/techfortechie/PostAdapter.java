@@ -78,7 +78,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         }
 
         private void createNotif() {
-            NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(mContext, "default")
+            NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(mContext, "null")
                     .setSmallIcon(R.drawable.profile_icon)
                     .setContentTitle("New Post")
                     .setContentText("Amd Threadripper vs Intel core i9")

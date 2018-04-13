@@ -19,6 +19,9 @@ import android.view.View;
 import android.widget.Toast;
 
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("test");
+        FirebaseInstanceId.getInstance().getToken();
+
         mToolbar = findViewById(R.id.toolbar);
         mToolbar.setTitle("Tech Feed");
         mToolbar.inflateMenu(R.menu.menu_main);

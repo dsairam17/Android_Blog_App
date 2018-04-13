@@ -35,5 +35,8 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:3.3.0'
     implementation 'com.google.firebase:firebase-storage:12.0.1'
     implementation 'com.google.firebase:firebase-config:12.0.1'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
 }
 apply plugin: 'com.google.gms.google-services'
