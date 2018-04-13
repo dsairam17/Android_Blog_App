@@ -8,4 +8,10 @@
         android:orderInCategory="100"
         android:title="Logout"
         app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/discussions_forum"
+        android:title="Discussions Forum"
+        app:showAsAction="never"/>
+
 </menu>

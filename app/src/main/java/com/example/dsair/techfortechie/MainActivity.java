@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     JSONObject jsonObject;
     JSONArray jsonArray;
     Toolbar mToolbar;
+    FloatingActionButton mDiscussions;
     SharedPreferences sharedPreferences;
     boolean doubleBackPressedOnce=false;
     @Override
@@ -56,7 +58,14 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseMessaging.getInstance().subscribeToTopic("test");
         FirebaseInstanceId.getInstance().getToken();
-
+        mDiscussions = (FloatingActionButton) findViewById(R.id.fab_chat);
+        mDiscussions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DiscussionsActivity.class);
+                startActivity(intent);
+            }
+        });
         mToolbar = findViewById(R.id.toolbar);
         mToolbar.setTitle("Tech Feed");
         mToolbar.inflateMenu(R.menu.menu_main);
@@ -74,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         MainActivity.this.finish();
                         return true;
+                    case R.id.discussions_forum:
+                        Intent intent1 = new Intent(MainActivity.this, DiscussionsActivity.class);
+                        startActivity(intent1);
                     default:
                         return MainActivity.super.onOptionsItemSelected(item);
                 }
