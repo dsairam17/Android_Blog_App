@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "92353929578",
+    "firebase_url": "https://techfortechie-22a30.firebaseio.com",
+    "project_id": "techfortechie-22a30",
+    "storage_bucket": "techfortechie-22a30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92353929578:android:a71101dc63991cd7",
+        "android_client_info": {
+          "package_name": "com.example.dsair.techfortechie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "92353929578-buk1rltrhvrfk13ha6qbbrklivshuked.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dsair.techfortechie",
+            "certificate_hash": "cb20c424805ec36bf33a97d2eeafbb12515c8c41"
+          }
+        },
+        {
+          "client_id": "92353929578-itclospo3oeeog69s2cske0hev4la56p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiGFcdTYcThjhAHuNi_JufS1hXAQqwapU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "92353929578-itclospo3oeeog69s2cske0hev4la56p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

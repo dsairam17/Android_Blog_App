@@ -28,5 +28,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:recyclerview-v7:27.1.0'
+
+    implementation 'com.google.firebase:firebase-database:12.0.1'
     implementation 'com.google.firebase:firebase-messaging:12.0.1'
+    implementation 'com.google.firebase:firebase-auth:12.0.1'
+    implementation 'com.firebaseui:firebase-ui-auth:3.3.0'
+    implementation 'com.google.firebase:firebase-storage:12.0.1'
+    implementation 'com.google.firebase:firebase-config:12.0.1'
 }
+apply plugin: 'com.google.gms.google-services'
