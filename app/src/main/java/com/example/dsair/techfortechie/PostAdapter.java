@@ -38,7 +38,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         Post post = mPostList.get(position);
         holder.setListeners();
         holder.setData(post, position);
-
     }
 
     @Override
@@ -68,7 +67,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.post_image:
-                    createNotif();
+//                    createNotif();
                     openPost(mPosition);
                     break;
                 case R.id.title_textview:
@@ -81,7 +80,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(mContext, "null")
                     .setSmallIcon(R.drawable.profile_icon)
                     .setContentTitle("New Post")
-                    .setContentText("Amd Threadripper vs Intel core i9")
+                    .setContentText("Notification Testing")
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT);
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(mContext);
             notificationManager.notify(new Random().nextInt(20), builder.build());
